@@ -1,6 +1,6 @@
 import React from 'react'
 
-function About() {
+const About: React.FC = () => {
   return (
     <div>
       <p>About page here</p>

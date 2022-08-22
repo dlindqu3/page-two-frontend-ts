@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SavedBooks() {
+const SavedBooks: React.FC = () => {
   return (
     <div>
       <p>SavedBooks page here</p>

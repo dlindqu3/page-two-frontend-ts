@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import SavedBooks from './pages/SavedBooks';
 import About from './pages/About';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <BrowserRouter>
