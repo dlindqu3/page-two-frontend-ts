@@ -27,7 +27,8 @@ const Home: React.FC = () => {
   
   interface categoryQueryInt {
     results: {
-      books: { title: string; author: string }[]
+      list_name: string;
+      books: bookInt[]
     }
   }
 
@@ -67,7 +68,7 @@ const Home: React.FC = () => {
       </form>
       {/* <p>{selectedCategory && selectedCategory}</p> */}
       <div>{nytData && nytData.map((book) => {
-        return <p key={book.title}>{book.title}</p>
+        return <p key={book.title}>{book.title} {book.author} </p>
       })}</div>
     </div>
   )
