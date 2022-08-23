@@ -34,7 +34,7 @@ const SavedBooks: React.FC = () => {
   
   const handleDeleteBook = async (book: bestsellerInt) => {
     try { 
-      let deleteURL = baseURL + '/delete/' + book._id
+      let deleteURL = baseURL + 'delete/' + book._id
       console.log('deleteURL: ', deleteURL)
       axios.delete(deleteURL) 
         .then((response) => {
