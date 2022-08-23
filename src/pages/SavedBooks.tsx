@@ -9,9 +9,11 @@ const SavedBooks: React.FC = () => {
     title: string;
     author: string;
     list: string;
+    notes?: string
   }
 
   const [bestsellerData, setBestsellerData] = useState<bestsellerInt[]>([]);
+  const [notes, setNotes] = useState<string>(''); 
 
   // url for saved bestseller items in mongo db 
   const baseURL = 'http://page-two.herokuapp.com/api/'
@@ -31,7 +33,6 @@ const SavedBooks: React.FC = () => {
     }
   }, []);
 
-  
   const handleDeleteBook = async (book: bestsellerInt) => {
     try { 
       let deleteURL = baseURL + 'delete/' + book._id
@@ -45,14 +46,17 @@ const SavedBooks: React.FC = () => {
     }
     }
 
+   
+
   return (
     <div>
       <p>SavedBooks page here</p>
       <div>
       {bestsellerData[0] && bestsellerData.map((item) => {
         return <>
-        <p key={item.title}> {item._id} {item.title} {item.author} {item.list}</p>
+        <p key={item.title}> {item._id} {item.title} {item.author} {item.list}</p> 
         <button onClick={() => {handleDeleteBook(item)} }>Delete</button>
+        
         </>
       })}
       </div>
