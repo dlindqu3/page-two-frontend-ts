@@ -4,8 +4,9 @@ import Home from "./pages/Home";
 import SavedBooks from "./pages/SavedBooks";
 import About from "./pages/About";
 
-
 const App: React.FC = () => {
+
+  const [displayModal, setDisplayModal] = useState(false); 
 
   return (
     <div className="App">
@@ -15,7 +16,10 @@ const App: React.FC = () => {
           <Route
             path="/saved-books"
             element={
-                <SavedBooks />
+              <>
+                {/* pass displayModal as props to SavedBooks */}
+                <SavedBooks showModal={displayModal} setShowModal={setDisplayModal}/>
+              </> 
             }
           ></Route>
           <Route path="/about" element={<About />}></Route>

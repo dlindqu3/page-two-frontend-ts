@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react"; 
+import Modal from "../components/Modal";
 import axios from "axios";
 
 
-const SavedBooks: React.FC = () => {
+interface AppProps {
+  showModal: boolean;
+  setShowModal: Function; 
+}
+
+const SavedBooks: React.FC<AppProps> = props => {
 
   interface bestsellerInt {
     _id: string;
@@ -49,6 +55,7 @@ const SavedBooks: React.FC = () => {
    
 
   return (
+    <>
     <div>
       <p>SavedBooks page here</p>
       <div>
@@ -56,11 +63,14 @@ const SavedBooks: React.FC = () => {
         return <>
         <p key={item.title}> {item._id} {item.title} {item.author} {item.list}</p> 
         <button onClick={() => {handleDeleteBook(item)} }>Delete</button>
+        <button onClick={() => { props.setShowModal(true)}}>Add notes</button>
         
         </>
       })}
       </div>
     </div>
+    {props.showModal && <Modal />}
+    </>
   )
 }
 
