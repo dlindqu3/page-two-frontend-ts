@@ -4,15 +4,17 @@ import Home from "./pages/Home";
 import SavedBooks from "./pages/SavedBooks";
 import About from "./pages/About";
 import Modal from "./components/Modal";
+import Navbar from "./components/Navbar";
 
 const App: React.FC = () => {
 
   const [displayModal, setDisplayModal] = useState(false); 
   const [updateId, setUpdateId] = useState(''); 
-  
+   
   return (
     <div className="App">
       <BrowserRouter>
+        <Navbar /> 
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route

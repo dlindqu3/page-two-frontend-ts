@@ -38,17 +38,20 @@ const Home: React.FC = () => {
 
   const [selectedCategory, setSelectedCategory] = useState("");
   const [nytData, setNytData] = useState<bookInt[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   let baseURL = "https://page-two.herokuapp.com/api";
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     let queryUrl = baseURL + "/bestsellers/" + selectedCategory;
     console.log("queryUrl: ", queryUrl);
     await axios.get(queryUrl).then((res) => {
       let resObj: categoryQueryInt = res.data;
       let booksArray: bookInt[] = resObj.results.books;
       setNytData(booksArray);
+      setIsLoading(false); 
     });
   };
 
@@ -88,6 +91,7 @@ const Home: React.FC = () => {
         </select>
         <button>Submit</button>
       </form>
+      {isLoading && <p>Loading...</p>}
       <p>{nytData[0] && selectedCategory}</p>
       <div>
         {nytData &&

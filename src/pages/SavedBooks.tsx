@@ -21,6 +21,7 @@ const SavedBooks: React.FC<AppProps> = props => {
 
   const [bestsellerData, setBestsellerData] = useState<bestsellerInt[]>([]);
   const [notes, setNotes] = useState<string>(''); 
+  const [isLoading, setIsLoading] = useState(true);
 
 
   // url for saved bestseller items in mongo db 
@@ -33,8 +34,9 @@ const SavedBooks: React.FC<AppProps> = props => {
       let url = baseURL + 'read-all'
       axios.get(url)
       .then(res => {
-        console.log(res.data)
-        setBestsellerData(res.data)
+        console.log(res.data);
+        setBestsellerData(res.data); 
+        setIsLoading(false); 
       })
     } catch(error){
       console.log(error)
@@ -65,6 +67,7 @@ const SavedBooks: React.FC<AppProps> = props => {
     <>
     <div>
       <p>SavedBooks page here</p>
+      {isLoading && <p>Loading...</p>}
       <div>
       {bestsellerData[0] && bestsellerData.map((item) => {
         return <>
