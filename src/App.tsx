@@ -3,11 +3,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SavedBooks from "./pages/SavedBooks";
 import About from "./pages/About";
+import Modal from "./components/Modal";
 
 const App: React.FC = () => {
 
   const [displayModal, setDisplayModal] = useState(false); 
-
+  const [updateId, setUpdateId] = useState(''); 
+  
   return (
     <div className="App">
       <BrowserRouter>
@@ -17,8 +19,9 @@ const App: React.FC = () => {
             path="/saved-books"
             element={
               <>
-                {/* pass displayModal as props to SavedBooks */}
-                <SavedBooks showModal={displayModal} setShowModal={setDisplayModal}/>
+                <SavedBooks showModal={displayModal} setShowModal={setDisplayModal} setUpdateId={setUpdateId}/>
+
+                {displayModal && <Modal showModal={displayModal} setShowModal={setDisplayModal} updateId={updateId}/>}
               </> 
             }
           ></Route>
