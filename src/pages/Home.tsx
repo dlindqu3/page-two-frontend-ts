@@ -51,61 +51,90 @@ const Home: React.FC = () => {
       let resObj: categoryQueryInt = res.data;
       let booksArray: bookInt[] = resObj.results.books;
       setNytData(booksArray);
-      setIsLoading(false); 
+      setIsLoading(false);
     });
   };
 
   const handleSaveBook = async (book: bookInt) => {
-  try {
-    let newObj = {
-      title: book.title,
-      author: book.author, 
-      list: selectedCategory
-    }
-    let postURL = baseURL + '/create'
-    axios.post(postURL, newObj)
-      .then((response) => {
+    try {
+      let newObj = {
+        title: book.title,
+        author: book.author,
+        list: selectedCategory,
+      };
+      let postURL = baseURL + "/create";
+      axios.post(postURL, newObj).then((response) => {
         console.log(response);
-      })
-  } catch (error){
-    console.log('error: ', error)
-  }
-  }
- 
+      });
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+
   return (
-    <div>
-      <p className="text-3xl font-bold underline">Home page here</p>
-      <form onSubmit={handleSubmit}>
-        <label>Category</label>
-        <select
-          value={selectedCategory}
-          onChange={(e) => {
-            setSelectedCategory(e.target.value);
-          }}
-        >
-          {bookCategories.map((category) => (
-            <option value={category} key={category}>
-              {category}
-            </option>
-          ))}
-        </select>
-        <button>Submit</button>
-      </form>
-      {isLoading && <p>Loading...</p>}
-      <p>{nytData[0] && selectedCategory}</p>
-      <div>
-        {nytData &&
-          nytData.map((book) => {
-            return (
-              <>
-                <p key={book.title}>
-                  {book.title} {book.author}
-                </p>
-                {/* <button onClick={() => {console.log('saved book: ', book)} }>Save</button> */}
-                <button onClick={() => {handleSaveBook(book)} }>Save</button>
-              </>
-            );
-          })}
+    <div className="h-screen bg-amber-100">
+      <div className="m-3">
+        <p>
+          Find new books to read with this convenient tool, which will allow you
+          to find current NYT bestsellers by category. Then, you can save books
+          that you would like to read later. To see all saved bestsellers,
+          navigate to the <span className="font-bold">Saved Books</span> page.
+          This page will display all books that users have saved over time.
+        </p>
+        <br /> 
+        <p className="">Select a category to find bestsellers: </p>
+        <form onSubmit={handleSubmit}>
+          <select
+            value={selectedCategory}
+            onChange={(e) => {
+              setSelectedCategory(e.target.value);
+            }}
+          >
+            {bookCategories.map((category) => (
+              <option value={category} key={category} className="">
+                {category}
+              </option>
+            ))}
+          </select>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white px-2 rounded cursor-pointer">
+            Submit
+          </button>
+        </form>
+        {isLoading && <p>Loading...</p>}
+        <br />
+        {nytData[0] && <p>Selected Category: {selectedCategory}</p>}
+        <div className="flex flex-wrap">
+          {nytData &&
+            nytData.map((book) => {
+              return (
+                <div>
+                  <div className="max-w-sm rounded overflow-hidden shadow-lg bg-slate-200 m-3">
+                    <div className="px-6 py-4">
+                      <div className="font-bold text-xl mb-2 content-center">
+                        {book.title}
+                      </div>
+                      <p className="text-gray-700 text-base content-center">
+                        Author: {book.author}
+                        <br />
+                        List: {selectedCategory}
+                      </p>
+                    </div>
+                    <div className="px-6 pt-2 pb-2">
+                    <button
+                    onClick={() => {
+                      handleSaveBook(book);
+                    }}
+                    className="bg-blue-500 hover:bg-blue-700 text-white px-2 rounded cursor-pointer "
+                  >
+                    Save
+                  </button>
+                    </div>
+                  </div>
+                  
+                </div>
+              );
+            })}
+        </div>
       </div>
     </div>
   );
