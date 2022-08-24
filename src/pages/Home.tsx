@@ -74,7 +74,7 @@ const Home: React.FC = () => {
  
   return (
     <div>
-      <p>Home page here</p>
+      <p className="text-3xl font-bold underline">Home page here</p>
       <form onSubmit={handleSubmit}>
         <label>Category</label>
         <select
