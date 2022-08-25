@@ -5,6 +5,7 @@ import SavedBooks from "./pages/SavedBooks";
 import About from "./pages/About";
 import Modal from "./components/Modal";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import "./index.css";
 
 
@@ -31,6 +32,7 @@ const App: React.FC = () => {
           ></Route>
           <Route path="/about" element={<About />}></Route> 
         </Routes>
+        <Footer /> 
       </BrowserRouter>
     </div>
   );

@@ -72,7 +72,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="h-screen bg-amber-100">
+    <div className="h-full min-h-screen bg-amber-100">
       <div className="m-3">
         <p>
           Find new books to read with this convenient tool, which will allow you
@@ -103,14 +103,14 @@ const Home: React.FC = () => {
         {isLoading && <p>Loading...</p>}
         <br />
         {nytData[0] && <p>Selected Category: {selectedCategory}</p>}
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-center">
           {nytData &&
             nytData.map((book) => {
               return (
                 <div>
                   <div className="max-w-sm rounded overflow-hidden shadow-lg bg-slate-200 m-3">
                     <div className="px-6 py-4">
-                      <div className="font-bold text-xl mb-2 content-center">
+                      <div className="font-bold mb-2 content-center">
                         {book.title}
                       </div>
                       <p className="text-gray-700 text-base content-center">
