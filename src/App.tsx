@@ -25,7 +25,6 @@ const App: React.FC = () => {
             element={
               <>
                 <SavedBooks showModal={displayModal} setShowModal={setDisplayModal} setUpdateId={setUpdateId}/>
-
                 {displayModal && <Modal showModal={displayModal} setShowModal={setDisplayModal} updateId={updateId}/>}
               </> 
             }

@@ -37,17 +37,16 @@ const Modal: React.FC<AppProps> = props => {
 
   return (
     <div className='modalBg'>
-      <div className='modalContainer'>
+      <div className='modalContainer bg-slate-200'>
         <button onClick={() => {props.setShowModal(false)}}>X</button>
-        <div className='header'>Notes</div>
+        <div className='header my-2'>Enter notes here:</div>
         <div className='body'>
-          <br></br>
           <textarea 
             onChange={handleTextChange}>{notes}</textarea>
         </div>
         <div className='footer'>
-          <button onClick={() => {props.setShowModal(false)}}>Cancel</button>
-          <button onClick={() => {handleUpdateBook( props.updateId, notes)}}>Save</button>
+          <button onClick={() => {props.setShowModal(false)}}  className="bg-red-400 hover:bg-red-500 text-white px-2 rounded cursor-pointer ">Cancel</button>
+          <button onClick={() => {handleUpdateBook( props.updateId, notes)}} className="bg-blue-500 hover:bg-blue-700 text-white px-2 rounded cursor-pointer">Save</button>
         </div>
       </div>
     </div>

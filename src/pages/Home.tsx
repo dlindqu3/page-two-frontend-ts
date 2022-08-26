@@ -72,68 +72,79 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="h-full min-h-screen bg-amber-100">
-      <div className="m-3">
-        <p>
-          Find new books to read with this convenient tool, which will allow you
-          to find current NYT bestsellers by category. Then, you can save books
-          that you would like to read later. To see all saved bestsellers,
-          navigate to the <span className="font-bold">Saved Books</span> page.
-          This page will display all books that users have saved over time.
-        </p>
-        <br /> 
-        <p className="">Select a category to find bestsellers: </p>
-        <form onSubmit={handleSubmit}>
-          <select
-            value={selectedCategory}
-            onChange={(e) => {
-              setSelectedCategory(e.target.value);
-            }}
-          >
-            {bookCategories.map((category) => (
-              <option value={category} key={category} className="">
-                {category}
-              </option>
-            ))}
-          </select>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white px-2 rounded cursor-pointer">
-            Submit
-          </button>
-        </form>
-        {isLoading && <p>Loading...</p>}
+    <div className="h-full min-h-screen bg-amber-100 rounded-sm">
+      <div className="my-3">
         <br />
-        {nytData[0] && <p>Selected Category: {selectedCategory}</p>}
-        <div className="flex flex-wrap justify-center">
-          {nytData &&
-            nytData.map((book) => {
-              return (
-                <div>
-                  <div className="max-w-sm rounded overflow-hidden shadow-lg bg-slate-200 m-3">
-                    <div className="px-6 py-4">
-                      <div className="font-bold mb-2 content-center">
-                        {book.title}
+        <div className="bg-slate-200 my-1 rounded-md mx-2">
+          <br />
+          <p className="mx-3">
+            Find new books to read with this convenient tool, which will allow
+            you to find current NYT bestsellers by category. Then, you can save
+            books that you would like to read later. To see all saved
+            bestsellers, navigate to the{" "}
+            <span className="font-bold">Saved Books</span> page. This page will
+            display all books that users have saved over time.
+          </p>
+          <br />
+        </div>
+
+        <div className="bg-slate-200 rounded-md mx-2">
+          <div className="mx-3">
+            
+            <p className="">Select a category to find bestsellers: </p>
+            <form onSubmit={handleSubmit}>
+              <select
+                value={selectedCategory}
+                onChange={(e) => {
+                  setSelectedCategory(e.target.value);
+                }}
+              >
+                {bookCategories.map((category) => (
+                  <option value={category} key={category} className="">
+                    {category}
+                  </option>
+                ))}
+              </select>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white px-2 rounded cursor-pointer">
+                Submit
+              </button>
+            </form>
+
+            {isLoading && <p>Loading...</p>}
+            <br />
+            {nytData[0] && <p>Selected Category: {selectedCategory}</p>}
+            <div className="flex flex-wrap justify-center">
+              {nytData &&
+                nytData.map((book) => {
+                  return (
+                    <div>
+                      <div className="max-w-sm rounded overflow-hidden shadow-lg bg-slate-100 m-3">
+                        <div className="px-6 py-4">
+                          <div className="font-bold mb-2 content-center">
+                            {book.title}
+                          </div>
+                          <p className="text-gray-700 text-base content-center">
+                            Author: {book.author}
+                            <br />
+                            List: {selectedCategory}
+                          </p>
+                        </div>
+                        <div className="px-6 pt-2 pb-2">
+                          <button
+                            onClick={() => {
+                              handleSaveBook(book);
+                            }}
+                            className="bg-blue-500 hover:bg-blue-700 text-white px-2 rounded cursor-pointer "
+                          >
+                            Save
+                          </button>
+                        </div>
                       </div>
-                      <p className="text-gray-700 text-base content-center">
-                        Author: {book.author}
-                        <br />
-                        List: {selectedCategory}
-                      </p>
                     </div>
-                    <div className="px-6 pt-2 pb-2">
-                    <button
-                    onClick={() => {
-                      handleSaveBook(book);
-                    }}
-                    className="bg-blue-500 hover:bg-blue-700 text-white px-2 rounded cursor-pointer "
-                  >
-                    Save
-                  </button>
-                    </div>
-                  </div>
-                  
-                </div>
-              );
-            })}
+                  );
+                })}
+            </div>
+          </div>
         </div>
       </div>
     </div>
