@@ -35,11 +35,11 @@ const Modal: React.FC<AppProps> = props => {
   }
 
   return (
-    <div className='bg-slate-300 opacity-70 fixed inset-0 z-50'>
+    <div className='bg-slate-300 opacity-95 fixed inset-0 z-50'>
       <div className='flex h-screen justify-center items-center'>
-      <div className='modalContainer bg-slate-200 rounded-md'>
+      <div className='modalContainer bg-slate-600 rounded-md'>
         <div className='m-2'>
-        <div className='header my-2'>Enter notes here:</div>
+        <div className='header my-2 text-white'>Enter notes here:</div>
         <div className='body'>
           <textarea 
             onChange={handleTextChange}>{notes}</textarea>
