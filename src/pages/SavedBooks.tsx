@@ -40,7 +40,7 @@ const SavedBooks: React.FC<AppProps> = (props) => {
     try {
       let deleteURL = baseURL + "delete/" + book._id;
       axios.delete(deleteURL).then((response) => {
-        window.location.reload();
+        // window.location.reload();
       });
     } catch (error) {
       console.log("error: ", error);
