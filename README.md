@@ -3,6 +3,7 @@
 
 ## Deployment
 - The server is deployed on Heroku at https://page-two.herokuapp.com/
+- The frontend is deployed on Vercel at https://page-two-frontend-ts.vercel.app
 
 ## Citations 
 - for the basic modal setup, I referenced PedroTech's video "Modal in ReactJS - Code a React Modal Tutorial using Hooks" at [link](https://www.youtube.com/watch?v=ZCvemsUfwPQ)
