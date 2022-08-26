@@ -1,5 +1,6 @@
 ## Site Overview
 - This website allows visitor to find new books that are listed on current NYT Bestseller lists. The visitor can filter the displayed bestsellers by category, and save books to read later. Saved books will persist in a database and display on the "saved books" page. On that page, visitors can see other saved books and update or delete items. This project was built with JavaScript, MongoDB, Express, React, Node, and Tailwind.css. 
+- The backend repository can be found at: https://github.com/dlindqu3/page-two-server-ts 
 
 ## Deployment
 - The server is deployed on Heroku at https://page-two.herokuapp.com/
