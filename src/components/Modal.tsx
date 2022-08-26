@@ -22,7 +22,7 @@ const Modal: React.FC<AppProps> = props => {
       axios.patch(patchURL, newObj)
         .then((response) => {
           props.setShowModal (false); 
-          // window.location.reload();
+          window.location.reload();
         })
     } catch (error){
       console.log('error: ', error)
