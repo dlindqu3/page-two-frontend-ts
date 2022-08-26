@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Modal from "../components/Modal";
 import axios from "axios";
 
 interface AppProps {
