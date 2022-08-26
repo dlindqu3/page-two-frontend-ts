@@ -29,7 +29,6 @@ const SavedBooks: React.FC<AppProps> = (props) => {
     try {
       let url = baseURL + "read-all";
       axios.get(url).then((res) => {
-        console.log(res.data);
         setBestsellerData(res.data);
         setIsLoading(false);
       });
@@ -41,9 +40,7 @@ const SavedBooks: React.FC<AppProps> = (props) => {
   const handleDeleteBook = async (book: bestsellerInt) => {
     try {
       let deleteURL = baseURL + "delete/" + book._id;
-      console.log("deleteURL: ", deleteURL);
       axios.delete(deleteURL).then((response) => {
-        console.log(response);
         window.location.reload();
       });
     } catch (error) {
@@ -54,8 +51,6 @@ const SavedBooks: React.FC<AppProps> = (props) => {
   const handleShowModal = (item: bestsellerInt) => {
     props.setUpdateId(item._id);
     props.setShowModal(true);
-    console.log('props.showModal: ', props.showModal)
-    console.log("current item id at update: ", item._id);
   };
 
   return (

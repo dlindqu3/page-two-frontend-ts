@@ -13,7 +13,7 @@ const Modal: React.FC<AppProps> = props => {
 
   let baseURL = "https://page-two.herokuapp.com/api";
 
-  const handleUpdateBook = async (id: string, newNotes: string) => {
+  const handleUpdateBook = async (id: string, newNotes: string) => { 
     try {
       let newObj = {
         notes: newNotes
@@ -21,8 +21,8 @@ const Modal: React.FC<AppProps> = props => {
       let patchURL = baseURL + '/update/' + id
       axios.patch(patchURL, newObj)
         .then((response) => {
-          console.log('axios patch call successful');
-          console.log(response);
+          props.setShowModal (false); 
+          window.location.reload();
         })
     } catch (error){
       console.log('error: ', error)
@@ -32,13 +32,13 @@ const Modal: React.FC<AppProps> = props => {
 
   const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
     setNotes(event.target.value);
-    console.log('notes: ', notes); 
   }
 
   return (
-    <div className='modalBg'>
-      <div className='modalContainer bg-slate-200'>
-        <button onClick={() => {props.setShowModal(false)}}>X</button>
+    <div className='bg-slate-300 opacity-70 fixed inset-0 z-50'>
+      <div className='flex h-screen justify-center items-center'>
+      <div className='modalContainer bg-slate-200 rounded-md'>
+        <div className='m-2'>
         <div className='header my-2'>Enter notes here:</div>
         <div className='body'>
           <textarea 
@@ -48,6 +48,8 @@ const Modal: React.FC<AppProps> = props => {
           <button onClick={() => {props.setShowModal(false)}}  className="bg-red-400 hover:bg-red-500 text-white px-2 rounded cursor-pointer ">Cancel</button>
           <button onClick={() => {handleUpdateBook( props.updateId, notes)}} className="bg-blue-500 hover:bg-blue-700 text-white px-2 rounded cursor-pointer">Save</button>
         </div>
+        </div>
+      </div>
       </div>
     </div>
   )

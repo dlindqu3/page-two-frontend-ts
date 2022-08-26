@@ -46,7 +46,6 @@ const Home: React.FC = () => {
     e.preventDefault();
     setIsLoading(true);
     let queryUrl = baseURL + "/bestsellers/" + selectedCategory;
-    console.log("queryUrl: ", queryUrl);
     await axios.get(queryUrl).then((res) => {
       let resObj: categoryQueryInt = res.data;
       let booksArray: bookInt[] = resObj.results.books;
@@ -63,9 +62,7 @@ const Home: React.FC = () => {
         list: selectedCategory,
       };
       let postURL = baseURL + "/create";
-      axios.post(postURL, newObj).then((response) => {
-        console.log(response);
-      });
+      axios.post(postURL, newObj).then((response) => {});
     } catch (error) {
       console.log("error: ", error);
     }
@@ -90,7 +87,6 @@ const Home: React.FC = () => {
 
         <div className="bg-slate-200 rounded-md mx-2">
           <div className="mx-3">
-            
             <p className="">Select a category to find bestsellers: </p>
             <form onSubmit={handleSubmit}>
               <select
@@ -129,16 +125,16 @@ const Home: React.FC = () => {
                             List: {selectedCategory}
                           </p>
                         </div>
-                        <div className="px-6 pt-2 pb-2">
-                          <button
-                            onClick={() => {
-                              handleSaveBook(book);
-                            }}
-                            className="bg-blue-500 hover:bg-blue-700 text-white px-2 rounded cursor-pointer "
-                          >
-                            Save
-                          </button>
-                        </div>
+                          <div className="px-6 pt-2 pb-2">
+                            <button
+                              onClick={() => {
+                                handleSaveBook(book);
+                              }}
+                              className="bg-blue-500 hover:bg-blue-700 text-white px-2 rounded cursor-pointer active:bg-teal-700"
+                            >
+                              Save
+                            </button>
+                          </div>
                       </div>
                     </div>
                   );
