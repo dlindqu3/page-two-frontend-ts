@@ -34,6 +34,7 @@ const Home: React.FC = () => {
   interface bookInt {
     title: string;
     author: string;
+    list?: string
   }
 
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -54,6 +55,29 @@ const Home: React.FC = () => {
     });
   };
 
+  
+  const handleDbCheck = async(book: bookInt) => {     
+    let targetObj = {
+      title: book.title, 
+      author: book.author, 
+      list: selectedCategory
+    }
+    try {
+      let url = baseURL + "/read-all";
+      const res = await axios.get(url)
+      for (let i = 0; i < res.data.length; i++){
+          let current = res.data[i]
+          if (current.title === targetObj.title && current.list === targetObj.list){
+            return true;
+          }    
+        }
+        return false; 
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
   const handleSaveBook = async (book: bookInt) => {
     try {
       let newObj = {
@@ -62,11 +86,23 @@ const Home: React.FC = () => {
         list: selectedCategory,
       };
       let postURL = baseURL + "/create";
-      axios.post(postURL, newObj).then((response) => {});
+      await axios.post(postURL, newObj)
+      // console.log(response)
     } catch (error) {
       console.log("error: ", error);
     }
   };
+
+
+  const handleCheckAndSave = async(book: bookInt): Promise<any> => {
+    let objInDb = await handleDbCheck(book);
+    // {objInDb && console.log('item already in db: ', book)}
+    !objInDb && await handleSaveBook(book)
+    // {!objInDb && console.log('new item added: ', book)}
+  }
+
+
+
 
   return (
     <div className="h-full min-h-screen bg-amber-100 rounded-sm">
@@ -128,7 +164,7 @@ const Home: React.FC = () => {
                           <div className="px-6 pt-2 pb-2">
                             <button
                               onClick={() => {
-                                handleSaveBook(book);
+                                handleCheckAndSave(book);
                               }}
                               className="bg-blue-500 hover:bg-blue-700 text-white px-2 rounded cursor-pointer active:bg-teal-700"
                             >
