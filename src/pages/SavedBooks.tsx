@@ -27,7 +27,7 @@ const SavedBooks: React.FC<AppProps> = (props) => {
   // useEffect, with an empty dependency array -- runs only on first page render
   useEffect(() => {
     try {
-      let url = baseURL + "read-all";
+      let url = baseURL + "/read-all";
       axios.get(url).then((res) => {
         setBestsellerData(res.data);
         setIsLoading(false);
@@ -39,7 +39,7 @@ const SavedBooks: React.FC<AppProps> = (props) => {
 
   const handleDeleteBook = async (book: bestsellerInt) => {
     try {
-      let deleteURL = baseURL + "delete/" + book._id;
+      let deleteURL = baseURL + "/delete/" + book._id;
       axios.delete(deleteURL).then((response) => {
         window.location.reload();
       });
