@@ -11,7 +11,8 @@ const Modal: React.FC<AppProps> = props => {
 
   const [notes, setNotes] = useState('');
 
-  let baseURL = "https://page-two.herokuapp.com/api";
+  // let baseURL = "https://page-two.herokuapp.com/api";
+  let baseURL = "https://page-two-server.onrender.com/api"
 
   const handleUpdateBook = async (id: string, newNotes: string) => { 
     try {

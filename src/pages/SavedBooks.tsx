@@ -20,7 +20,8 @@ const SavedBooks: React.FC<AppProps> = (props) => {
   const [isLoading, setIsLoading] = useState(true);
 
   // url for saved bestseller items in mongo db
-  const baseURL = "https://page-two.herokuapp.com/api/";
+  // const baseURL = "https://page-two.herokuapp.com/api/";
+  let baseURL = "https://page-two-server.onrender.com/api"
 
   // useEffect -- typically runs on every page render
   // useEffect, with an empty dependency array -- runs only on first page render
