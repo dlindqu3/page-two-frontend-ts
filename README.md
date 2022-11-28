@@ -10,6 +10,3 @@
 - for the basic modal setup, I referenced PedroTech's video "Modal in ReactJS - Code a React Modal Tutorial using Hooks" at [link](https://www.youtube.com/watch?v=ZCvemsUfwPQ)
 - for the basic modal setup, I also referenced Tech & Code's video "React Modal with Tailwind CSS" at [link](https://www.youtube.com/watch?v=UXKt-IFgBGM)
 - for the styling of active buttons, I referenced Adam Wathan's video "Designing with Tailwind CSS: Hover, Focus, and Active Styles" at [link](https://www.youtube.com/watch?v=olyRu5R1EZ4)
--  Bjorn Krols, "Deploying a TypeScript Express application to Render", [link](https://technotrampoline.com/articles/deploying-a-typescript-express-application-to-render/)
-- "Typescript support?", [link](https://community.render.com/t/typescript-support/377)
-- "Deploy express + typescript as Render web service", [link](https://community.render.com/t/deploy-express-typescript-as-render-web-service/7374)
